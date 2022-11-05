@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { CameraScreen } from './src/screens/Camera';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <CameraScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -13,7 +14,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // paddingHorizontal: 20,
+
+    // backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
   },
