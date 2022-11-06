@@ -1,50 +1,54 @@
 import React from "react"
 
-import { View, Text } from "react-native";
+import { View, Text, Pressable, Dimensions } from "react-native";
 import { ButtonsContainer } from "../../components/ButtonsContainer.";
 import { styles } from "./styles";
 import { FlashIcon, CrossIcon, CameraIcon, SwitchCameraType } from "../../../assets/icons";
 import { Camera, CameraType } from 'expo-camera';
 
-const TopButtons = [
-  {
-    text: "Flash",
-    icon: <FlashIcon />,
-    onPress: () => console.log("Flash"),
-  },
-  {
-    text: "Identify the plant",
 
-  },
-  {
-    text: "Cross",
-    icon: <CrossIcon />,
-    onPress: () => console.log("Cross"),
-  },
-]
-const BottomButtons = [
-  {
-    text: "File",
-    onPress: () => console.log("File"),
-  },
-  {
-    text: "Camera",
-    icon: <CameraIcon />,
-    onPress: () => console.log("Camera"),
-  },
-  {
-    text: "Switch",
-    icon: <SwitchCameraType />,
-    onPress: () => CameraType.back ? CameraType.front : CameraType.back,
-  },
-]
+const WINDOW_HEIGHT = Dimensions.get('window').height;
+const CAPTURE_SIZE = Math.floor(WINDOW_HEIGHT * 0.08);
+
 export const CameraScreen = () => {
+  const cameraRef = React.useRef();
   const [type, setType] = React.useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
 
-  function toggleCameraType() {
-    setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
+  const [hasPermission, setHasPermission] = React.useState<string | null | boolean >(null);
+
+  React.useEffect(() => {
+    onHandlePermission();
+  }, []);
+
+  const onHandlePermission = async () => {
+    const { status } = await Camera.requestCameraPermissionsAsync();
+    setHasPermission(status === 'granted');
+  };
+
+
+
+  const handleCameraType = () => {
+    setType(
+      type === CameraType.back
+        ? CameraType.front
+        : CameraType.back
+    );
   }
+
+  const handleCameraCapture = () => {
+  }
+
+  const handleViewGallery = () => {
+  }
+
+  const handleClose = () => {
+  }
+
+  const handleFlash = () => {
+  }
+
+
 
   // get camera permision
   React.useEffect(() => {
@@ -53,13 +57,38 @@ export const CameraScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Add 3 icons in row */}
-      <ButtonsContainer topButtons={TopButtons} />
-      
-      <Camera style={styles.camera} type={type} />
      
-      <ButtonsContainer topButtons={BottomButtons} />
-      {/* <ButtonsContainer /> */}
+
+      
+      <Camera 
+        // ref={cameraRef}
+        style={styles.camera} 
+        type={type}
+        onCameraReady={() => console.log('Camera is ready')}
+      />
+ <View style={styles.buttonContainerTop}>
+        <Pressable onPress={handleFlash}>
+          <FlashIcon />
+        </Pressable>
+        <Pressable>
+          <Text style={styles.mtm}>Identify the plant</Text>
+        </Pressable>
+        <Pressable onPress={handleClose}>
+          <CrossIcon />
+        </Pressable>
+      </View>
+      
+      <View style={styles.buttonContainerBottom}>
+        <Pressable onPress={handleViewGallery}>
+        <Text style={styles.mtm}>File</Text>
+        </Pressable>
+        <Pressable onPress={handleCameraCapture}>
+          <CameraIcon />
+        </Pressable>
+        <Pressable onPress={handleCameraType}>
+          <SwitchCameraType />
+        </Pressable>
+      </View>
     </View>
   )
 }
