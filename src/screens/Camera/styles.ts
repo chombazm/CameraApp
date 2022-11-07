@@ -1,10 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    backgroundrColor: "#000",
+    width: '100%',
+    height: '100%',
+    backgroundrColor: '#000',
   },
   buttonContainerTop: {
     display: 'flex',
@@ -36,8 +36,7 @@ export const styles = StyleSheet.create({
   camera: {
     flex: 1,
     ...StyleSheet.absoluteFillObject,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-
-})
+});
