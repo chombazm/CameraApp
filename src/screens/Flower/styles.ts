@@ -1,12 +1,208 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../../assets/colors';
 
 export const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    flex: 1,
+    backgroundrColor: '#000',
+  },
+  centralMainContainer: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'lavender',
+  },
+
+  topContainer: {
+    width: '100%',
+    height: '25%',
+    backgroundColor: 'papayawhip',
+  },
+  topHeaderMenu: {
+    width: '100%',
+    marginTop: 40,
+    display: 'flex',
+    padding: 20,
+    flexDirection: 'row-reverse',
+  },
+  imageHero: {
+    width: '100%',
+    height: '100%',
+  },
+  mainContainer: {
+    width: '100%',
+    height: '75%',
+    backgroundColor: colors.white,
+    borderRadius: 20,
+    padding: 20,
+  },
+  indexNegMargin: {
+    marginTop: -20,
+  },
+  dividerLine: {
+    width: '100%',
+    height: 2,
+    backgroundColor: colors.grayLight,
+    marginTop: 20,
+  },
+  spaceIcon: {
+    marginRight: 10,
+  },
+  shadeIcon: {
+    padding: 1,
+    borderRadius: 50,
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+
+  shadeIconMini: {
+    padding: 4,
+    borderRadius: 50,
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundrColor: '#000',
+    backgroundColor: colors.secondary,
+  },
+  statusBarMini: {
+    width: '100%',
+    paddingVertical: 10,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  statusText: {
+    fontSize: 18,
+    color: colors.primary,
+    fontWeight: 'bold',
+  },
+  mdHeder: {
+    fontSize: 24,
+    color: colors.gray,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+
+  bottomContainerFixed: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    // height: 60,
+    paddingVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: colors.white,
+  },
+  buttonBottom: {
+    width: '100%',
+    height: 60,
+    borderRadius: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  groupBtnContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  buttonBottomText: {
+    color: colors.white,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  tagContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  tagText: {
+    fontSize: 14,
+    backgroundColor: colors.grayLight,
+    color: colors.gray,
+    paddingHorizontal: 15,
+    paddingVertical: 3,
+    marginRight: 10,
+    borderRadius: 5,
+  },
+
+  descriptionContainer: {
+    display: 'flex',
+    // alignItems: 'center',
+    // paddingVertical: 10,
+  },
+  descriptionHeader: {},
+  descriptionHeaderText: {
+    fontSize: 18,
+    color: colors.gray,
+    fontWeight: 'bold',
+    marginRight: 10,
+  },
+  descriptionHeaderSubText: {
+    fontSize: 14,
+    color: colors.gray,
+    marginRight: 10,
+  },
+
+  descriptionText: {
+    fontSize: 14,
+    color: colors.gray,
+    marginRight: 10,
+    marginTop: 10,
+  },
+  readMore: {
+    fontSize: 14,
+    color: colors.primary,
+    fontWeight: 'bold',
+    marginRight: 10,
+    marginTop: 10,
+  },
+
+  readingsSection: {
+    marginTop: 20,
+  },
+  readingsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    // backgroundColor: 'red',
+  },
+  readingContainer: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 10,
+    // backgroundColor: 'blue',
+  },
+  readingIconContainer: {
+    padding: 5,
+    borderRadius: 10,
+    backgroundColor: 'pink',
+  },
+  readingTextContainer: {
+    display: 'flex',
+    flex: 1,
+    // aspectRatio: 1,
+    // flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    // marginRight: 10,
+    marginLeft: 10,
+    // backgroundColor: 'green',
+  },
+  readingHeader: {
+    fontSize: 14,
+    color: colors.gray,
+    fontWeight: 'bold',
+  },
+  readingVolumeText: {
+    fontSize: 18,
+    color: colors.gray,
   },
 });

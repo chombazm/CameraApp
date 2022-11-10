@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import React, { ReactNode } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 type ButtonProps = {
   topButtons: {
@@ -9,7 +9,7 @@ type ButtonProps = {
   }[];
 };
 
-export const ButtonsContainer = ({topButtons} : ButtonProps) => {
+export const ButtonsContainer = ({ topButtons }: ButtonProps) => {
   return (
     <View style={styles.container}>
       {topButtons.map((button, index) => (
@@ -17,9 +17,9 @@ export const ButtonsContainer = ({topButtons} : ButtonProps) => {
           {button.icon || <Text style={styles.mtm}>{button.text}</Text>}
         </Pressable>
       ))}
-      </View>
-  )
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -34,5 +34,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
     fontWeight: 'bold',
-  }
-})
+  },
+});

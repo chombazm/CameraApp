@@ -1,14 +1,16 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import React from 'react';
 
-export const Button = () => {
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+
+export const ButtonComp = () => {
   return (
     <Pressable style={styles.container}>
       {/* Icon */}
       <Text>Flash</Text>
       <Text>Button</Text>
     </Pressable>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -17,4 +19,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-})
+});
