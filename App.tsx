@@ -3,14 +3,15 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { CameraScreen } from './src/screens/Camera';
 import { FlowerScreen } from './src/screens/Flower';
+import { HomeScreen } from './src/screens/Home';
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <CameraScreen /> */}
-
-      <FlowerScreen />
-      <StatusBar style="auto" />
+      <HomeScreen />
+      {/* <FlowerScreen /> */}
+      <StatusBar style="light" />
     </View>
   );
 }

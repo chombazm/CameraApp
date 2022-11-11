@@ -15,6 +15,7 @@ import {
   TemperetureIcon,
   TickIcon,
 } from '../../../assets/icons';
+import { CtaButton } from '../../components/CtaButton';
 import { PlantDescription } from '../../components/PlantDescription';
 import { PlantReadings } from '../../components/PlantReading';
 import { PlantTags } from '../../components/PlantTags';
@@ -96,14 +97,11 @@ export const FlowerScreen = () => {
       </View>
 
       <View style={styles.bottomContainerFixed}>
-        <Pressable style={styles.buttonBottom}>
-          <View style={styles.groupBtnContent}>
-            <View style={styles.spaceIcon}>
-              <BookmarkIcon />
-            </View>
-            <Text style={styles.buttonBottomText}>Save this plant</Text>
-          </View>
-        </Pressable>
+        <CtaButton
+          text="Save this plant"
+          onPress={() => {}}
+          icon={<BookmarkIcon />}
+        />
       </View>
     </View>
   );

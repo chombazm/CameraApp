@@ -21,12 +21,12 @@ export const PlantReadings = ({ readings }: PlantReadingsProps) => {
 
   const firstTwoReadings = readings.slice(0, 2);
   const lastTwoReadings = readings.slice(2, 4);
-  console.log(readings);
   return (
     <View style={styles.readingsSection}>
       <View style={styles.readingsContainer}>
         {firstTwoReadings.map(reading => (
           <ReadingView
+            key={reading.header}
             icon={reading.icon}
             header={reading.header}
             volume={reading.volume}
@@ -36,6 +36,7 @@ export const PlantReadings = ({ readings }: PlantReadingsProps) => {
       <View style={styles.readingsContainer}>
         {lastTwoReadings.map(reading => (
           <ReadingView
+            key={reading.header}
             icon={reading.icon}
             header={reading.header}
             volume={reading.volume}
@@ -47,7 +48,6 @@ export const PlantReadings = ({ readings }: PlantReadingsProps) => {
 };
 
 const ReadingView = ({ icon, header, volume }: ReadingViewProps) => {
-  const heightColor = header === 'Height' ? colors.secondary : colors.gray;
   return (
     <View style={styles.readingContainer}>
       <View style={[styles.readingIconContainer]}>{icon}</View>

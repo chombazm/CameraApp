@@ -14,7 +14,7 @@ export const PlantDescription = ({
 }: PlantDescriptionProps) => {
   return (
     <View style={styles.descriptionContainer}>
-      <View style={styles.descriptionHeader}>
+      <View>
         <Text style={styles.descriptionHeaderText}>{title}</Text>
         <Text style={styles.descriptionHeaderSubText}>From {source}</Text>
       </View>
@@ -30,13 +30,14 @@ export const PlantDescription = ({
 const styles = StyleSheet.create({
   descriptionContainer: {
     display: 'flex',
+    marginTop: 10,
     // alignItems: 'center',
     // paddingVertical: 10,
   },
-  descriptionHeader: {},
+
   descriptionHeaderText: {
     fontSize: 18,
-    color: colors.gray,
+    color: colors.black,
     fontWeight: 'bold',
     marginRight: 10,
   },
@@ -44,13 +45,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.gray,
     marginRight: 10,
+    marginVertical: 10,
   },
 
   descriptionText: {
     fontSize: 14,
     color: colors.gray,
     marginRight: 10,
-    marginTop: 10,
+    lineHeight: 20,
+    // marginTop: 10,
   },
   readMore: {
     fontSize: 14,

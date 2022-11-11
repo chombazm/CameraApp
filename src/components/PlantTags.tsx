@@ -7,14 +7,13 @@ type PlantTagsProps = {
 };
 
 export const PlantTags = (tags: PlantTagsProps) => (
-  console.log(tags),
-  (
-    <View style={styles.tagContainer}>
-      {tags.tags.map(tag => (
+  <View style={styles.tagContainer}>
+    {tags.tags.map(tag => (
+      <View key={tag} style={styles.tagTextContainer}>
         <Text style={styles.tagText}>{tag}</Text>
-      ))}
-    </View>
-  )
+      </View>
+    ))}
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -24,13 +23,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
   },
-  tagText: {
-    fontSize: 14,
-    backgroundColor: colors.grayLight,
-    color: colors.gray,
-    paddingHorizontal: 15,
-    paddingVertical: 3,
-    marginRight: 10,
+  tagTextContainer: {
     borderRadius: 5,
+    backgroundColor: colors.grayLight,
+    marginRight: 10,
+  },
+
+  tagText: {
+    paddingHorizontal: 15,
+    paddingVertical: 4,
+    fontSize: 12,
+    color: colors.gray,
   },
 });

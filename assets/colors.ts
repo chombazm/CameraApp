@@ -6,6 +6,6 @@ export const colors = {
   quinary: '',
   white: '#fff',
   black: '#333333',
-  gray: '#628093',
-  grayLight: '#E5E5E5',
+  gray: '#696969',
+  grayLight: '#F0F3F6',
 };
