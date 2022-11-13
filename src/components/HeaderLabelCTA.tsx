@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
   xsText: {
     fontSize: 12,
     color: colors.primary,
+    textDecorationLine: 'underline',
   },
 });
