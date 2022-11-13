@@ -1,37 +1,63 @@
 import React from 'react';
 
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { ArrowIcon } from '../../assets/icons';
 
-export const RowCols = () => {
+type AlertsProps = {
+  alerts: RowProps[];
+};
+
+type RowProps = {
+  title: string;
+  subtitle: string;
+  image: any;
+  onPress: () => void;
+};
+
+export const RowCols = ({ alerts }: AlertsProps) => {
+  console.log(alerts);
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        <View>
-          <Text style={styles.xsText}>
-            <Image source={require('../../assets/images/alerts1.png')} />
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.xsText}>Chomba chanda</Text>
-          <Text style={styles.xsText}>Chomba chanda</Text>
-        </View>
-        <View>
-          <Text style={styles.xsText}>{'>'}</Text>
-        </View>
-      </View>
+      {alerts.map(alert => (
+        <Row
+          title={alert.title}
+          subtitle={alert.subtitle}
+          onPress={alert.onPress}
+          image={alert.image}
+        />
+      ))}
     </View>
   );
 };
 
+const Row = ({ title, subtitle, image, onPress }: RowProps) => (
+  <View style={styles.row}>
+    <View>
+      <Image source={image} />
+    </View>
+    <View style={styles.fxLeft}>
+      <Text style={styles.xsText}>{title}</Text>
+      <Text style={styles.xsText}>{subtitle}</Text>
+    </View>
+    <Pressable style={styles.fxLeft} onPress={onPress}>
+      <ArrowIcon />
+    </Pressable>
+  </View>
+);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    paddingVertical: 10,
   },
   row: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: 'red',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+  },
+  fxLeft: {
+    alignSelf: 'center',
   },
   xsText: {
     fontSize: 14,

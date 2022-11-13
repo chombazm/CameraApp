@@ -55,6 +55,23 @@ const readings = [
     volume: 'Back Yard',
   },
 ];
+
+const alerts = [
+  {
+    id: '1',
+    title: 'Water your Cactus today (living room)',
+    subtitle: 'It’s been 2-3 weeks since you have prune the d... ',
+    image: require('../../../assets/images/alerts1.png'),
+    onPress: () => console.warn('Alerts'),
+  },
+  {
+    id: '2',
+    title: 'Prune the dead branches of Bamboo t... ',
+    subtitle: 'It’s 2 weeks old, you have to water it twice a week',
+    image: require('../../../assets/images/alert2.png'),
+    onPress: () => console.warn('Alerts'),
+  },
+];
 export const HomeScreen = () => {
   return (
     <View style={styles.container}>
@@ -145,7 +162,7 @@ export const HomeScreen = () => {
         />
 
         <View style={styles.mpSet}>
-          <RowCols />
+          <RowCols alerts={alerts} />
         </View>
       </ScrollView>
       <StatusBar style="auto" />
