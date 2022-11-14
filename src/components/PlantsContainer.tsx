@@ -64,7 +64,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.grayLight,
   },
-  popularPlantTextContainer: {},
+  popularPlantTextContainer: {
+    width: '80%',
+  },
   popularPlantText: {},
   popularPlantImage: {
     width: 120,

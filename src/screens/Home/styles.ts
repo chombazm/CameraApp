@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: colors.white,
     paddingTop: 50,
+    paddingBottom: 30,
   },
 
   ctaContainer: {

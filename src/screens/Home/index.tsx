@@ -60,7 +60,7 @@ const alerts = [
   {
     id: '1',
     title: 'Water your Cactus today (living room)',
-    subtitle: 'It’s been 2-3 weeks since you have prune the d... ',
+    subtitle: 'It’s been 2-3 weeks since you have prune the dead leaves',
     image: require('../../../assets/images/alerts1.png'),
     onPress: () => console.warn('Alerts'),
   },
