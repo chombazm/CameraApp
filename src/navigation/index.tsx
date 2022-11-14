@@ -2,18 +2,29 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import { HomeScreen } from '../screens/Home';
 import { CameraScreen } from '../screens/Camera';
 import { FlowerScreen } from '../screens/Flower';
 import {
   HomeStackParamList,
   MainTabParamList,
+  NavigationProps,
   RootStackParamList,
 } from '../types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DefaultScreen } from '../screens/Default';
 import { colors } from '../../assets/colors';
+import {
+  TabArticlesIcon,
+  TabExploreIcon,
+  TabHomeIcon,
+  TabProfileIcon,
+  TabSavedIcon,
+} from '../../assets/icons';
 
 export function Navigation() {
   return (
@@ -41,7 +52,10 @@ function RootNavigator() {
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-function MainTabNavigator() {
+function MainTabNavigator({
+  navigation,
+  route,
+}: NativeStackScreenProps<MainTabParamList, 'Home'>) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -51,12 +65,55 @@ function MainTabNavigator() {
         tabBarInactiveTintColor: colors.gray,
 
         tabBarActiveTintColor: colors.primary,
+
+        // return <TabExploreIcon color={color} />;
+        // },
       }}>
-      <Tab.Screen name="Home" component={HomeNavigator} />
-      <Tab.Screen name="Explore" component={DefaultScreen} />
-      <Tab.Screen name="Articles" component={DefaultScreen} />
-      <Tab.Screen name="Saved" component={DefaultScreen} />
-      <Tab.Screen name="Profile" component={DefaultScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabHomeIcon color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Explore"
+        component={DefaultScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabExploreIcon color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Articles"
+        component={DefaultScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabArticlesIcon color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Saved"
+        component={DefaultScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabSavedIcon color={color} focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={DefaultScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabProfileIcon color={color} focused={focused} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
