@@ -4,15 +4,15 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { CameraScreen } from './src/screens/Camera';
 import { FlowerScreen } from './src/screens/Flower';
 import { HomeScreen } from './src/screens/Home';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Navigation } from './src/navigation';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <CameraScreen /> */}
-      <HomeScreen />
-      {/* <FlowerScreen /> */}
-      <StatusBar style="light" />
-    </View>
+    <SafeAreaProvider>
+      <Navigation />
+      <StatusBar style="auto" />
+    </SafeAreaProvider>
   );
 }
 

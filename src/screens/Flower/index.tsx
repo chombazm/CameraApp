@@ -19,6 +19,7 @@ import { CtaButton } from '../../components/CtaButton';
 import { PlantDescription } from '../../components/PlantDescription';
 import { PlantReadings } from '../../components/PlantReading';
 import { PlantTags } from '../../components/PlantTags';
+import { NavigationProps } from '../../types';
 import { styles } from './styles';
 
 const readings = [
@@ -52,7 +53,7 @@ const description = {
 
 const tags = ['Poppy', 'Flower', 'Breadseed', 'Opium'];
 
-export const FlowerScreen = () => {
+export const FlowerScreen = ({ navigation }: NavigationProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.centralMainContainer}>
@@ -63,7 +64,12 @@ export const FlowerScreen = () => {
             resizeMode="cover">
             <View style={styles.topHeaderMenu}>
               <View style={styles.shadeIcon}>
-                <CrossIcon />
+                <Pressable
+                  onPress={() => {
+                    navigation.goBack();
+                  }}>
+                  <CrossIcon />
+                </Pressable>
               </View>
             </View>
           </ImageBackground>

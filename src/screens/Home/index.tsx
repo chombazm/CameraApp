@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, Text, Pressable, Image, ScrollView } from 'react-native';
@@ -17,6 +19,7 @@ import { PlantReadings } from '../../components/PlantReading';
 import { PlantsContainer } from '../../components/PlantsContainer';
 import { RowCols } from '../../components/RowCols';
 import { SectionDivider } from '../../components/SectionDivider';
+import { HomeStackParamList, NavigationProps } from '../../types';
 import { styles } from './styles';
 
 const popularPlants = [
@@ -72,7 +75,8 @@ const alerts = [
     onPress: () => console.warn('Alerts'),
   },
 ];
-export const HomeScreen = () => {
+
+export const HomeScreen = ({ navigation }: NavigationProps) => {
   return (
     <View style={styles.container}>
       {/* Header Cta  */}
@@ -97,7 +101,9 @@ export const HomeScreen = () => {
       <View style={styles.ctaContainer}>
         <CtaButton
           text="Scan and identify the plant"
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('Camera');
+          }}
           icon={<ScanIcon />}
           isPrimary={false}
         />
@@ -120,9 +126,7 @@ export const HomeScreen = () => {
 
         {/* Popular plants */}
         <PlantsContainer Plants={popularPlants} />
-        <View style={styles.mpSet}>
-          <SectionDivider />
-        </View>
+        <SectionDivider />
 
         {/* Header Cta */}
         <HeaderLabelCTA
@@ -143,9 +147,7 @@ export const HomeScreen = () => {
           <FourGridContainer readings={readings} />
         </View>
 
-        <View style={styles.mpSet}>
-          <SectionDivider />
-        </View>
+        <SectionDivider />
 
         {/* Header Cta */}
         <HeaderLabelCTA
@@ -161,9 +163,7 @@ export const HomeScreen = () => {
           isPrimary={false}
         />
 
-        <View style={styles.mpSet}>
-          <RowCols alerts={alerts} />
-        </View>
+        <RowCols alerts={alerts} />
       </ScrollView>
       <StatusBar style="auto" />
     </View>

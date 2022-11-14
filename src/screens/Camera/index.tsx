@@ -10,11 +10,12 @@ import {
   SwitchCameraType,
 } from '../../../assets/icons';
 import { Camera, CameraType } from 'expo-camera';
+import { NavigationProps } from '../../types';
 
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 const CAPTURE_SIZE = Math.floor(WINDOW_HEIGHT * 0.08);
 
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }: NavigationProps) => {
   const cameraRef = React.useRef();
   const [type, setType] = React.useState(CameraType.back);
   const [isCameraReady, setIsCameraReady] = React.useState(false);
@@ -37,11 +38,15 @@ export const CameraScreen = () => {
     setType(type === CameraType.back ? CameraType.front : CameraType.back);
   };
 
-  const handleCameraCapture = () => {};
+  const handleCameraCapture = () => {
+    navigation.navigate('FoundCapture');
+  };
 
   const handleViewGallery = () => {};
 
-  const handleClose = () => {};
+  const handleClose = () => {
+    navigation.goBack();
+  };
 
   const handleFlash = () => {};
 
@@ -50,7 +55,7 @@ export const CameraScreen = () => {
     requestPermission();
   }, []);
 
-  if (!isCameraReady) return <View />;
+  // if (!isCameraReady) return <View />;
   return (
     <View style={styles.container}>
       <Camera

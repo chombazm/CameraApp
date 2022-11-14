@@ -44,7 +44,7 @@ export const HeaderLabelCTA = ({
 const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
-    paddingHorizontal: 10,
+
     paddingVertical: 15,
     display: 'flex',
     flexDirection: 'row',

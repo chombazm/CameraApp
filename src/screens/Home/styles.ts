@@ -8,16 +8,12 @@ export const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: colors.white,
     paddingTop: 50,
-    paddingBottom: 30,
+    paddingHorizontal: 15,
   },
 
   ctaContainer: {
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 20,
-  },
-
-  mpSet: {
-    padding: 10,
   },
 });

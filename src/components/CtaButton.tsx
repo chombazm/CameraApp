@@ -20,7 +20,8 @@ export const CtaButton = ({
       style={[
         styles.buttonBottom,
         { backgroundColor: isPrimary ? colors.primary : colors.secondary },
-      ]}>
+      ]}
+      onPress={onPress}>
       <View style={styles.groupBtnContent}>
         {icon && <View style={styles.spaceIcon}>{icon}</View>}
         <Text
