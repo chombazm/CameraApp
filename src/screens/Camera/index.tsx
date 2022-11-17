@@ -23,7 +23,7 @@ export const CameraScreen = ({ navigation }: any) => {
   const [type, setType] = React.useState(CameraType.back);
   const [isCameraReady, setIsCameraReady] = React.useState(false);
   const [permission, requestPermission] = Camera.useCameraPermissions();
-
+  const [photo, setPhoto] = React.useState<string | null>(null);
   // state error checkers TODO: this can be refactored
   const [isCameraError, setIsCameraError] = React.useState(false);
   const [isFlashError, setIsFlashError] = React.useState(false);
@@ -45,21 +45,17 @@ export const CameraScreen = ({ navigation }: any) => {
   const handleCameraType = () => {
     setType(type === CameraType.back ? CameraType.front : CameraType.back);
   };
-
   const handleCameraCapture = async () => {
-    // if (cameraRef.current) {
-    //   captureRef(cameraRef, {
-    //     format: 'jpg',
-    //     quality: 0.8,
-    //   }).then((uri: string) => {
-    //     console.log('do something with ', uri);
-    //     // navigation.navigate('FoundCapture', { uri });
-    //   });
-
+    const cameraOptions = {
+      quality: 1,
+      base64: true,
+      exif: true,
+    };
     if (cameraRef.current) {
       try {
-        const photo = await cameraRef.current.takePictureAsync();
-        navigation.navigate('FoundCapture', { uri: photo.uri });
+        const photo = await cameraRef.current.takePictureAsync(cameraOptions);
+        setPhoto(photo.uri);
+        // navigation.navigate('FoundCapture', { uri: photo.uri });
       } catch (error) {
         console.log(error);
       }

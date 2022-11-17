@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { PressableArea } from './PressableArea';
 
 type ButtonProps = {
   topButtons: {
@@ -13,9 +14,9 @@ export const ButtonsContainer = ({ topButtons }: ButtonProps) => {
   return (
     <View style={styles.container}>
       {topButtons.map((button, index) => (
-        <Pressable key={index} onPress={button.onPress}>
+        <PressableArea key={index} onPress={button.onPress}>
           {button.icon || <Text style={styles.mtm}>{button.text}</Text>}
-        </Pressable>
+        </PressableArea>
       ))}
     </View>
   );

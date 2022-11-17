@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { PressableArea } from './PressableArea';
 
 export const ButtonComp = () => {
   return (
-    <Pressable style={styles.container}>
+    <PressableArea style={styles.container}>
       {/* Icon */}
       <Text>Flash</Text>
       <Text>Button</Text>
-    </Pressable>
+    </PressableArea>
   );
 };
 

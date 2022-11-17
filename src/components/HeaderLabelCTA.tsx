@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { colors } from '../../assets/colors';
+import { PressableArea } from './PressableArea';
 
 type HeaderLabelCTAProps = {
   label: string;
@@ -29,13 +30,16 @@ export const HeaderLabelCTA = ({
     </Text>
     <View style={styles.headerActionIcons}>
       {cta?.map((item, index) => (
-        <Pressable key={index} onPress={item.action} style={styles.margIcon}>
+        <PressableArea
+          key={index}
+          onPress={item.action}
+          style={styles.margIcon}>
           {typeof item.property === 'string' ? (
             <Text style={styles.xsText}>{item.property}</Text>
           ) : (
             item.property
           )}
-        </Pressable>
+        </PressableArea>
       ))}
     </View>
   </View>

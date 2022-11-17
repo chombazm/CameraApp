@@ -1,6 +1,7 @@
 import React from 'react';
-import { Pressable, View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { colors } from '../../assets/colors';
+import { PressableArea } from './PressableArea';
 
 type CtaButtonProps = {
   text: string;
@@ -16,7 +17,7 @@ export const CtaButton = ({
   isPrimary = true,
 }: CtaButtonProps) => {
   return (
-    <Pressable
+    <PressableArea
       style={[
         styles.buttonBottom,
         { backgroundColor: isPrimary ? colors.primary : colors.secondary },
@@ -32,7 +33,7 @@ export const CtaButton = ({
           {text}
         </Text>
       </View>
-    </Pressable>
+    </PressableArea>
   );
 };
 
