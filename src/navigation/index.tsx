@@ -9,12 +9,7 @@ import {
 import { HomeScreen } from '../screens/Home';
 import { CameraScreen } from '../screens/Camera';
 import { FlowerScreen } from '../screens/Flower';
-import {
-  HomeStackParamList,
-  MainTabParamList,
-  NavigationProps,
-  RootStackParamList,
-} from '../types';
+import { MainTabParamList, RootStackParamList } from '../types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DefaultScreen } from '../screens/Default';
 import { colors } from '../../assets/colors';
@@ -45,7 +40,9 @@ function RootNavigator() {
         headerTintColor: colors.primary,
       }}>
       <Stack.Screen name="Root" component={MainTabNavigator} />
-      {/* <Stack.Screen name="HomeMain" component={MainTabNavigator} /> */}
+      <Stack.Screen name="Camera" component={CameraScreen} />
+      <Stack.Screen name="FoundCapture" component={FlowerScreen} />
+      <Stack.Screen name="NotFoundCapture" component={DefaultScreen} />
     </Stack.Navigator>
   );
 }
@@ -55,7 +52,7 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 function MainTabNavigator({
   navigation,
   route,
-}: NativeStackScreenProps<MainTabParamList, 'Home'>) {
+}: NativeStackScreenProps<MainTabParamList>) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -65,13 +62,10 @@ function MainTabNavigator({
         tabBarInactiveTintColor: colors.gray,
 
         tabBarActiveTintColor: colors.primary,
-
-        // return <TabExploreIcon color={color} />;
-        // },
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeNavigator}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabHomeIcon color={color} focused={focused} />
@@ -117,19 +111,25 @@ function MainTabNavigator({
     </Tab.Navigator>
   );
 }
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
-function HomeNavigator() {
-  return (
-    <HomeStack.Navigator
-      initialRouteName="HomeTab"
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <HomeStack.Screen name="HomeTab" component={HomeScreen} />
-      <HomeStack.Screen name="Camera" component={CameraScreen} />
-      <HomeStack.Screen name="FoundCapture" component={FlowerScreen} />
-      <HomeStack.Screen name="NotFoundCapture" component={DefaultScreen} />
-    </HomeStack.Navigator>
-  );
-}
+// function HomeNavigator() {
+//   return (
+//     <HomeStack.Navigator
+//       initialRouteName="HomeTab"
+//       screenOptions={{
+//         headerShown: false,
+//       }}>
+//       <HomeStack.Screen
+//         name="Camera"
+//         component={CameraScreen}
+//         options={{
+//           tabBarVisible: false,
+//         }}
+//       />
+//       <HomeStack.Screen name="NotFoundCapture" component={DefaultScreen} />
+//       <HomeStack.Screen name="FoundCapture" component={FlowerScreen} />
+//       <HomeStack.Screen name="HomeTab" component={HomeScreen} />
+//     </HomeStack.Navigator>
+//   );
+// }

@@ -62,7 +62,6 @@ const ReadingView = ({ icon, header, volume }: ReadingViewProps) => {
 const styles = StyleSheet.create({
   readingsSection: {
     // marginTop: 20,
-    // backgroundColor: colors.white,
   },
   readingsContainer: {
     display: 'flex',
@@ -70,7 +69,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 10,
-    // backgroundColor: 'red',
   },
   readingContainer: {
     display: 'flex',
@@ -78,7 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginRight: 10,
+    // marginRight: 10,
     // backgroundColor: 'blue',
   },
   readingIconContainer: {
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     justifyContent: 'space-evenly',
     // marginRight: 10,
-    marginLeft: 5,
+    marginLeft: 10,
     // backgroundColor: 'green',
   },
   readingHeader: {

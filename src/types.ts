@@ -1,5 +1,8 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 export type MainTabParamList = {
   Home: undefined;
@@ -9,20 +12,13 @@ export type MainTabParamList = {
   Profile: undefined;
 };
 
-export type HomeStackParamList = {
-  HomeTab: NavigatorScreenParams<MainTabParamList>;
-  Camera: undefined;
-  FoundCapture: undefined;
-  NotFoundCapture: undefined;
-};
-
 export type RootStackParamList = {
   Root: NavigatorScreenParams<MainTabParamList> | undefined;
-  HomeMain: NavigatorScreenParams<HomeStackParamList> | undefined;
   NotFound: undefined;
+  HomeTab: undefined;
+  Camera: undefined;
+  FoundCapture: {
+    uri: string;
+  };
+  NotFoundCapture: undefined;
 };
-
-export type NavigationProps = NativeStackScreenProps<
-  HomeStackParamList,
-  'Camera'
->;

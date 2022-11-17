@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import { captureRef } from 'react-native-view-shot';
 import { View, Text, Pressable, Dimensions } from 'react-native';
 import { ButtonsContainer } from '../../components/ButtonsContainer.';
 import { styles } from './styles';
@@ -10,16 +10,24 @@ import {
   SwitchCameraType,
 } from '../../../assets/icons';
 import { Camera, CameraType } from 'expo-camera';
-import { NavigationProps } from '../../types';
+import { MainTabParamList, RootStackParamList } from '../../types';
+import { RouteProp } from '@react-navigation/native';
 
 const WINDOW_HEIGHT = Dimensions.get('window').height;
 const CAPTURE_SIZE = Math.floor(WINDOW_HEIGHT * 0.08);
 
-export const CameraScreen = ({ navigation }: NavigationProps) => {
-  const cameraRef = React.useRef();
+// TODO: Type the navigation prop
+export const CameraScreen = ({ navigation }: any) => {
+  //  TODO: Type the useRef hook
+  const cameraRef = React.useRef<any>();
   const [type, setType] = React.useState(CameraType.back);
   const [isCameraReady, setIsCameraReady] = React.useState(false);
   const [permission, requestPermission] = Camera.useCameraPermissions();
+
+  // state error checkers TODO: this can be refactored
+  const [isCameraError, setIsCameraError] = React.useState(false);
+  const [isFlashError, setIsFlashError] = React.useState(false);
+  const [isCaptureError, setIsCaptureError] = React.useState(true);
 
   const [hasPermission, setHasPermission] = React.useState<
     string | null | boolean
@@ -38,9 +46,27 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
     setType(type === CameraType.back ? CameraType.front : CameraType.back);
   };
 
-  const handleCameraCapture = () => {
-    navigation.navigate('FoundCapture');
+  const handleCameraCapture = async () => {
+    // if (cameraRef.current) {
+    //   captureRef(cameraRef, {
+    //     format: 'jpg',
+    //     quality: 0.8,
+    //   }).then((uri: string) => {
+    //     console.log('do something with ', uri);
+    //     // navigation.navigate('FoundCapture', { uri });
+    //   });
+
+    if (cameraRef.current) {
+      try {
+        const photo = await cameraRef.current.takePictureAsync();
+        navigation.navigate('FoundCapture', { uri: photo.uri });
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
+
+  // navigation.navigate('FoundCapture');
 
   const handleViewGallery = () => {};
 
@@ -55,11 +81,25 @@ export const CameraScreen = ({ navigation }: NavigationProps) => {
     requestPermission();
   }, []);
 
-  // if (!isCameraReady) return <View />;
+  React.useEffect(() => {
+    if (permission?.granted) {
+      setIsCameraReady(true);
+    }
+  }, [permission, isCameraReady]);
+
+  if (!isCameraReady) return <View style={styles.cameraNotReady} />;
+  // if (isCaptureError)
+  //   return (
+  //     <View style={styles.errorContainer}>
+  //       <Text style={styles.errorText}>
+  //         There was an error capturing the image
+  //       </Text>
+  //     </View>
+  //   );
   return (
     <View style={styles.container}>
       <Camera
-        // ref={cameraRef}
+        ref={cameraRef}
         style={styles.camera}
         type={type}
         onCameraReady={() => setIsCameraReady(true)}

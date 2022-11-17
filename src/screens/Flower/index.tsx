@@ -19,7 +19,6 @@ import { CtaButton } from '../../components/CtaButton';
 import { PlantDescription } from '../../components/PlantDescription';
 import { PlantReadings } from '../../components/PlantReading';
 import { PlantTags } from '../../components/PlantTags';
-import { NavigationProps } from '../../types';
 import { styles } from './styles';
 
 const readings = [
@@ -53,13 +52,17 @@ const description = {
 
 const tags = ['Poppy', 'Flower', 'Breadseed', 'Opium'];
 
-export const FlowerScreen = ({ navigation }: NavigationProps) => {
+// TODO: Type the navigation prop
+export const FlowerScreen = ({ navigation, route }: any) => {
+  const { uri } = route.params;
+
+  console.log(uri, 'uri from camera');
   return (
     <View style={styles.container}>
       <View style={styles.centralMainContainer}>
         <View style={styles.topContainer}>
           <ImageBackground
-            source={require('../../../assets/images/flower1.png')}
+            source={{ uri }}
             style={styles.imageHero}
             resizeMode="cover">
             <View style={styles.topHeaderMenu}>

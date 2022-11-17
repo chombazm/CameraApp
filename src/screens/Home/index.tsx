@@ -19,7 +19,7 @@ import { PlantReadings } from '../../components/PlantReading';
 import { PlantsContainer } from '../../components/PlantsContainer';
 import { RowCols } from '../../components/RowCols';
 import { SectionDivider } from '../../components/SectionDivider';
-import { HomeStackParamList, NavigationProps } from '../../types';
+// import { HomeStackParamList, NavigationProps } from '../../types';
 import { styles } from './styles';
 
 const popularPlants = [
@@ -76,7 +76,8 @@ const alerts = [
   },
 ];
 
-export const HomeScreen = ({ navigation }: NavigationProps) => {
+// TODO: Type the navigation prop
+export const HomeScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       {/* Header Cta  */}
@@ -143,9 +144,9 @@ export const HomeScreen = ({ navigation }: NavigationProps) => {
         />
 
         {/* Categories */}
-        <View style={{ paddingHorizontal: 20 }}>
-          <FourGridContainer readings={readings} />
-        </View>
+        {/* <View style={{ paddingHorizontal: 20 }}> */}
+        <FourGridContainer readings={readings} />
+        {/* </View> */}
 
         <SectionDivider />
 

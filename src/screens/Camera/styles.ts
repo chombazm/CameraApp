@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 30,
     position: 'absolute',
-    top: 0,
+    top: 20,
     left: 0,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     position: 'absolute',
-    bottom: 0,
+    bottom: 20,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -38,5 +38,24 @@ export const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  cameraNotReady: {
+    flex: 1,
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
+  },
+
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
